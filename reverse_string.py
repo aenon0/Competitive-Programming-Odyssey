@@ -1,10 +1,11 @@
 class Solution:
-    def reverseString(self, letter_list: List[str]) -> None:
-        right_index = len(letter_list) - 1
-        left_index = 0 
-        while(left_index < right_index):
-            letter_list[left_index], letter_list[right_index] = letter_list[right_index], letter_list[left_index] 
-            right_index -= 1 
-            left_index += 1
-        return letter_list
-        
+    def reverseString(self, s: List[str]) -> None:
+#by passing indices
+        def rev(left, right):
+            # nonlocal s
+            if left >= right:
+                return
+            s[left], s[right] = s[right], s[left]
+            rev(left + 1, right - 1)
+            
+        rev(0, len(s) - 1)
